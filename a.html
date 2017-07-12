@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    link
+  </head>
+  <body>
+
+    <p> 本页form提交 </p>
+    <form action="http://b.esile.me:9092/b.json" method="get">
+      <button type="submit">submit</button>
+    </form>
+
+    <p> --------------我是分割线--------------- </p>
+    <p> iframe form提交 </p>
+    <iframe src="./frame_post.html" frameborder="1"></iframe>
+
+    <p> --------------我是分割线--------------- </p>
+    <p> 演示一次csrf攻击 </p>
+    <iframe id="icsrf" src="./csrf_attack.html" frameborder="1"></iframe>
+
+    <p> --------------我是分割线--------------- </p>
+    <p> 演示jsonp跨域请求 </p>
+		<div>
+      <p>
+        原生
+        <button id="btn">提交</button>
+      </p>
+      <p>
+        jQuery
+        <button id="btn_1">提交</button>
+      </p>
+		</div>
+
+  </body>
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript" charset="utf-8">
+    var url = "http://b.esile.me:9092/b.json";
+    $.get(url, function (data){
+          console.log(data);
+    })
+    var icsrf = $("#icsrf");
+
+    //    $.ajax({
+    //         type: "GET",
+    //         xhrFields: {withCredentials: true},
+    //         url: url,
+    //         success: function(){
+    //          console.log(data);
+    //        }
+    //    });
+
+	 function showData(result){
+     console.log(result);
+   }
+	 $("#btn").click(function () {
+		 //向头部输入一个脚本，该脚本发起一个跨域请求
+		 $("head").append("<script src='http://c.esile.me:9093/user?callback=showData'><\/script>");
+   });
+
+	 $("#btn_1").click(function () {
+		 //向头部输入一个脚本，该脚本发起一个跨域请求
+     $.ajax({
+         url: "http://c.esile.me:9093/user",
+         type: "GET",
+         dataType: "jsonp",  //指定服务器返回的数据类型
+         jsonpCallback: "showData",  //指定回调函数名称
+         success: function (data) {
+             console.info("调用success");
+         }
+      });
+   });
+
+  </script>
+</html>
