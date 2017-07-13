@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    link
+  </head>
+  <body>
+
+    <p> 本页form提交 </p>
+    <form action="http://b.esile.me:9092/b.json" method="get">
+      <button type="submit">submit</button>
+    </form>
+
+    <p> --------------我是分割线--------------- </p>
+    <p> iframe form提交 </p>
+    <iframe src="./frame_post.html" frameborder="1"></iframe>
+
+    <p> --------------我是分割线--------------- </p>
+    <p> 演示一次csrf攻击 </p>
+    <iframe id="icsrf" src="./csrf_attack.html" frameborder="1"></iframe>
+
+  </body>
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript" charset="utf-8">
+    var url = "http://b.esile.me:9092/b.json";
+    $.get(url, function (data){
+          console.log(data);
+    })
+  </script>
+</html>

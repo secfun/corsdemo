@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    link
+  </head>
+  <body>
+    <p> --------------我是分割线--------------- </p>
+    <p> 演示cors资源共享 </p>
+
+  </body>
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript" charset="utf-8">
+    var url = "http://b.esile.me:9092/b.json";
+    $.get(url, function (data){
+          console.log(data);
+    })
+    var icsrf = $("#icsrf");
+
+    //    $.ajax({
+    //         type: "GET",
+    //         xhrFields: {withCredentials: true},
+    //         url: url,
+    //         success: function(){
+    //          console.log(data);
+    //        }
+    //    });
+  </script>
+</html>
