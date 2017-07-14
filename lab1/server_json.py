@@ -1,16 +1,13 @@
-#!/usr/bin/env python
-import SimpleHTTPServer
+from flask import request
+import json
+from flask import Flask
+app = Flask(__name__)
 
-class MyHTTPRequestHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
-    def end_headers(self):
-        self.send_my_headers()
-
-        SimpleHTTPServer.SimpleHTTPRequestHandler.end_headers(self)
-
-    def send_my_headers(self):
-        self.send_header("Access-Control-Allow-Origin", "http://a.esile.me:9091")
-        self.send_header("Access-Control-Allow-Credentials", "true")
-
+@app.route('/user', methods=['GET', 'POST'])
+def counter():
+    user = {"name": "xudy"}
+    return json.dumps(user)
 
 if __name__ == '__main__':
-    SimpleHTTPServer.test(HandlerClass=MyHTTPRequestHandler)
+    app.run(host='0.0.0.0', port='9092')
+

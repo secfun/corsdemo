@@ -9,7 +9,7 @@
   <body>
 
     <p> 本页form提交 </p>
-    <form action="http://b.esile.me:9092/b.json" method="get">
+    <form action="http://b.esile.me:9092/user" method="post">
       <button type="submit">submit</button>
     </form>
 
@@ -24,7 +24,7 @@
   </body>
   <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
   <script type="text/javascript" charset="utf-8">
-    var url = "http://b.esile.me:9092/b.json";
+    var url = "http://b.esile.me:9092/user";
     $.get(url, function (data){
           console.log(data);
     })

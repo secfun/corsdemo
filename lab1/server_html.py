@@ -8,8 +8,6 @@ class MyHTTPRequestHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         SimpleHTTPServer.SimpleHTTPRequestHandler.end_headers(self)
 
     def send_my_headers(self):
-        #self.send_header("access-control-allow-origin", "http://esile.me:9092")
-        #self.send_header("access-control-allow-credentials", "true")
         self.send_header("Set-Cookie", "pageAccess=3; expires=Wed, 31-Dec-2018 01:34:53 GMT")
 
 
